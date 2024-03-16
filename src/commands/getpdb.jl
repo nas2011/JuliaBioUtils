@@ -1,6 +1,6 @@
 using BioStructures
 """
-Download the PDB file for a given PDB id. Returns the DataFrame.
+Download the PDB file for a given PDB id.
 
 # Args
 - `id`: PDB id
@@ -23,5 +23,6 @@ Download the PDB file for a given PDB id. Returns the DataFrame.
     fpath = joinpath(outDir,f)
     struc = read(fpath,fmt)
     println(struc)
-    DataFrame(collectatoms(struc))
+    df = DataFrame(collectatoms(struc))
+    display(df)
 end
