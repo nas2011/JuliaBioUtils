@@ -10,6 +10,7 @@ Download the PDB file for a given PDB id.
 - `-f, --format=<arg>`: PDB, PDBXML, mmCIF, or MMTF. Default = PDB
 """
 @cast function getpdb(id::String;outDir::String = pwd(),format::String="PDB")
+    id = uppercase(id)
     fmtMap = Dict(
         "PDB" => PDB,
         "PDBXML" => PDBXML,
