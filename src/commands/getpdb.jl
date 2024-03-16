@@ -31,6 +31,6 @@ Download the PDB file for a given PDB id.
     if all
         display(df)
     else
-        display(df[:,1:10])
+        display(df[1:10,:])
     end
 end
