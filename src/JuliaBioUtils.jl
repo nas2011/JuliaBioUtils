@@ -1,5 +1,7 @@
 module JuliaBioUtils
 
-# Write your package code here.
+using Comonicon , DataFrames, CSV, BioStructures
+
+include("commands/getpdb.jl")
 
 end
