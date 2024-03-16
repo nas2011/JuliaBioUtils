@@ -8,8 +8,11 @@ Download the PDB file for a given PDB id.
 # Options
 - `-o, --outDir=<arg>`: Location to save the file.
 - `-f, --format=<arg>`: PDB, PDBXML, mmCIF, or MMTF. Default = PDB
+
+# Flags
+- `-a, --all`: Show all rows of the resulting PDB table. Default is first 10 rows.
 """
-@cast function getpdb(id::String;outDir::String = pwd(),format::String="PDB")
+@cast function getpdb(id::String;outDir::String = pwd(),format::String="PDB",all::Bool=false)
     id = uppercase(id)
     fmtMap = Dict(
         "PDB" => PDB,
@@ -25,5 +28,9 @@ Download the PDB file for a given PDB id.
     struc = read(fpath,fmt)
     println(struc)
     df = DataFrame(collectatoms(struc))
-    display(df)
+    if all
+        display(df)
+    else
+        display(df[:,1:10])
+    end
 end
